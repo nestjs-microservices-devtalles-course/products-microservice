@@ -4,11 +4,13 @@ process.loadEnvFile();
 
 interface EnvVars {
   PORT: number;
+  DATABASE_URL: string;
 }
 
 const envVarsSchema = joi
   .object<EnvVars>({
     PORT: joi.number().default(3000),
+    DATABASE_URL: joi.string().required(),
   })
   .unknown(true);
 
